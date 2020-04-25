@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Diff</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script src="./vdom.js"></script>
+  <script>
+    let vnode = createElement(
+      'div',
+      {
+        id: 'test',
+      },
+      [
+        createElement(
+          'p',
+          {
+            class: 'test2',
+            key: 'dsa',
+            style: { color: 'red' }
+          },
+          '节点2'
+        ),
+      ]
+    )
+
+    let vnode2 = createElement(
+      'div',
+      {
+        id: 'test',
+      },
+      [
+        createElement(
+          'p',
+          {
+            class: 'test2',
+            key: 'dsa',
+            style: { color: 'black', 'font-size': '10px' }
+          },
+          '节点2'
+        ),
+        createElement(
+          'p',
+          {
+            class: 'test2 class-message',
+            key: 'cbb',
+            style: { color: 'green', 'font-size': '30px' },
+          },
+          '节点111111'
+        ),
+        createElement(
+          'p',
+          {
+            class: 'test2 class-message',
+            key: 'cbbb',
+            style: { color: 'yellow', 'font-size': '38px' },
+          },
+          '节点22222'
+        ),
+      ]
+    )
+
+    render(vnode, document.getElementById('app'))
+    setTimeout(() => {
+      render(vnode2, document.getElementById('app'))
+    }, 2000)
+  </script>
+</html>
